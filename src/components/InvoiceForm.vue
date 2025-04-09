@@ -44,7 +44,13 @@
       <!-- Items -->
       <div class="mt-6">
         <h2 class="text-lg font-semibold">Items</h2>
-        <div v-for="(item, index) in items" :key="index" class="grid grid-cols-4 gap-2 mt-2">
+        <div class="grid grid-cols-5 gap-2">
+          <span class="font-semibold">Description</span>
+          <span class="font-semibold">Qty</span>
+          <span class="font-semibold">Unit Price</span>
+          <span class="font-semibold">Total</span>
+        </div>
+        <div v-for="(item, index) in items" :key="index" class="grid grid-cols-5 gap-2 mt-2">
           <input
             v-model="item.description"
             placeholder="Description"
@@ -61,6 +67,13 @@
             type="number"
             placeholder="Unit Price"
             class="border p-2 rounded-md"
+          />
+          <input
+            :value="item.qty * item.unitPrice"
+            type="number"
+            placeholder="Total"
+            class="border p-2 rounded-md"
+            readonly
           />
           <button @click="removeItem(index)" class="text-red-600">Remove</button>
         </div>
